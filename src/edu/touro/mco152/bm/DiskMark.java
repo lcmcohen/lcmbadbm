@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
 * Stores important values about the program while running, such as cumulative min/max/average
 * and tracks the mark number and the bwMbSec property
-* These values can ge set or retrieved, in numeric (int/double) form or as Strings
+* These values can be set or retrieved, in numeric (int/double) form or as Strings
 * A toString method which will print many of these together with appropriate lables exists as well 
 <p>
 * @param  type the Marking Type to be used for class operations for the current BM 
