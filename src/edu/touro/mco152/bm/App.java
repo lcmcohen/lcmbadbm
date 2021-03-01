@@ -17,7 +17,14 @@ import java.util.logging.Logger;
 
 /**
  * Primary class for global variables and common methods.
+ *<p>
+ *Controls many of the BM system's backend operations, such as initializing the GUI mainFrame, starting the BenchMark function, 
+ adjusting the message property as needed, and setting and updating configurations and data metrics
+ *
+ *@see #setupDataArea()
+ *@see #updateMetrics(DiskMark mark)
  */
+
 public class App {
 
     public static final String APP_CACHE_DIR = System.getProperty("user.home") + File.separator + ".jDiskMark";
@@ -184,6 +191,15 @@ public class App {
         }
     }
 
+    /**
+    * Returns the values of current configurations as a String using StringBuilder
+    *<p> 
+    *Creates a StringBuilder object, and uses it to create one long String indicating current vals of version, 
+    *read and write test, DIrectory location, and various other data points such as block-sequence and number of files,
+    *then returns as a String
+    <p>
+    *@return a String containing all the relevant data neatly arranged line by line  
+    */
     public static String getConfigString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Config for Java Disk Mark ").append(getVersion()).append('\n');
@@ -321,7 +337,15 @@ public class App {
     public static long targetTxSizeKb() {
         return (long) blockSizeKb * numOfBlocks * numOfMarks;
     }
-
+/**
+* Adjust values of DiskMark object to account for newest values.
+*<p>
+* This method is used for both READ and WRITE values, depending on the situation, 
+* and checks if current values are the max/min, and resets the average to account for newest value.
+*<p>
+*
+*@param mark The DiskMark object whose values are to be used and contains the R/W data 
+*/
     public static void updateMetrics(DiskMark mark) {
         if (mark.type == DiskMark.MarkType.WRITE) {
             if (wMax == -1 || wMax < mark.getBwMbSec()) {

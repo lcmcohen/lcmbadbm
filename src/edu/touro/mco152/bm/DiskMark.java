@@ -3,8 +3,14 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- *
+* Stores important values about the program while running, such as cumulative min/max/average
+* and tracks the mark number and the bwMbSec property
+* These values can be set or retrieved, in numeric (int/double) form or as Strings
+* A toString method which will print many of these together with appropriate lables exists as well 
+<p>
+* @param  type the Marking Type to be used for class operations for the current BM 
  */
+
 public class DiskMark {
 
     static DecimalFormat df = new DecimalFormat("###.###");
@@ -14,6 +20,7 @@ public class DiskMark {
     private double cumMin = 0;
     private double cumMax = 0;
     private double cumAvg = 0;
+    
     DiskMark(MarkType type) {
         this.type = type;
     }

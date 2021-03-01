@@ -5,7 +5,13 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ *Initializes and controls the SelectFrame for our GUI
+ *<p>
+ * The SlectFrame extends capabilities from JFrame, and sets a very specific layout for its components, 
+ * and also controls its own location relative to other components. It also utilizes Swing's FileChooser. 
+ *Once it completes its work, the SelectFrame object is obsolete and therefore disposes itself.
+ *<p>
+ *Much of the code within cannot be changed for compatibility reasons
  */
 public class SelectFrame extends javax.swing.JFrame {
 
@@ -60,6 +66,14 @@ public class SelectFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    *This method is used when the FileChooser's action is called for.
+    *<p>
+    *It displays the event that triggered it to the user, gets the action command, 
+    *and if it is ApproveSelection, set locationDir to selected file, tell App to save the current 
+    *configurations, and set mainFrame location to locationDir. The selectFrame is disposed of upon this method's completion.
+    <p>
+    */
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
         // TODO add your handling code here:
         System.out.println(evt);
