@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
  *  represented by a DiskMark.
  *  <p>
  *      The class includes getters and setters for the various details of the benchmark, as well as a toString method for
- *      the benchmark which returns many of the details
+ *      the benchmark which returns many of the details.
  *  </p>
  *
  */

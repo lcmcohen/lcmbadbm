@@ -10,7 +10,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utility methods for jDiskMark
+ * Utility methods for jDiskMark. Includes methods to find information about devices. Also contains methods
+ * to clear directories and get random numbers within a ranges.
+ * <p>
+ *     Contains multiple methods for compatibility with both Linux and Windows OS.
+ * </p>
  */
 public class Util {
 
