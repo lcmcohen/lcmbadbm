@@ -3,6 +3,12 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
+ *  The class represents a single disk benchmark. Both read and write benchmarks with their details can be
+ *  represented by a DiskMark.
+ *  <p>
+ *      The class includes getters and setters for the various details of the benchmark, as well as a toString method for
+ *      the benchmark which returns many of the details
+ *  </p>
  *
  */
 public class DiskMark {

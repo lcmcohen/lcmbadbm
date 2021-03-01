@@ -16,7 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables and common methods.
+ * Primary class for global variables and common methods. Contains run configurations and options, such as autoReset
+ * or autoRemove. Also contains basic properties about the application.
+ * <p>
+ *     Contains methods to initialize the GUI and control the configuration and the data storage. Also, contains a method
+ *     to retrieve version number. Contains a method to begin taking a benchmark which starts the swing worker thread.
+ * </p>
  */
 public class App {
 
@@ -82,7 +87,7 @@ public class App {
     /**
      * Get the version from the build properties. Defaults to 0.0 if not found.
      *
-     * @return
+     * @return a string of the version number, will be 0.0 if the version can't be found
      */
     public static String getVersion() {
         Properties bp = new Properties();
