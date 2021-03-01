@@ -3,7 +3,7 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- *
+ * Represents one complete run of benchmarking data. Holds the data for Max, Avg, and Min.
  */
 public class DiskMark {
 

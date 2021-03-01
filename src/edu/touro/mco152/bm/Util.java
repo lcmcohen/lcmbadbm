@@ -20,7 +20,7 @@ public class Util {
      * Deletes the Directory and all files within
      *
      * @param path Directory to delete
-     * @return True if path deleted successfully
+     * @return True if path deleted successfully or False if unsuccessful
      */
     static public boolean deleteDirectory(File path) {
         if (path.exists()) {
@@ -41,7 +41,7 @@ public class Util {
      * The difference between min and max can be at most
      * <code>Integer.MAX_VALUE - 1</code>.
      *
-     * @param min Minimum value
+     * @param min Minimum value.  Must be lesser than max.
      * @param max Maximum value.  Must be greater than min.
      * @return Integer between min and max, inclusive.
      * @see java.util.Random#nextInt(int)

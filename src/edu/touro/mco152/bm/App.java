@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables and common methods.
+ * Primary class for global variables and methods relating to the general settings of the App. Home of the Main method.
+ * <p>
+ * Contains a few of the methods relating to the handling of Diskmarks.
  */
 public class App {
 
@@ -82,7 +84,7 @@ public class App {
     /**
      * Get the version from the build properties. Defaults to 0.0 if not found.
      *
-     * @return
+     * @return String of version number of program
      */
     public static String getVersion() {
         Properties bp = new Properties();
