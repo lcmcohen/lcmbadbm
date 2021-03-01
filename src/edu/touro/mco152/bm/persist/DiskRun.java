@@ -77,6 +77,11 @@ public class DiskRun implements Serializable {
         setBlockOrder(order);
     }
 
+    /**
+     *  Finds all the DiskRuns in the table of DiskRuns that are stored by the application.
+     *
+     * @return a list of all diskRuns
+     */
     public static List<DiskRun> findAll() {
         EntityManager em = EM.getEntityManager();
         return em.createNamedQuery("DiskRun.findAll", DiskRun.class).getResultList();

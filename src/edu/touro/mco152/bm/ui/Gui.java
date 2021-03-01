@@ -17,7 +17,7 @@ import java.io.Serial;
 import java.text.NumberFormat;
 
 /**
- * Store gui references for easy access
+ * Store gui references for easy access.
  */
 public final class Gui {
 
