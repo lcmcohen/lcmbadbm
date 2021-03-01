@@ -292,6 +292,10 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         });
     }
 
+    /**
+     * Method for cleanup after completion of benchmarking. Will delete current data if setting specified. Will also
+     * change state and adjust te GUI.
+     */
     @Override
     protected void done() {
         if (App.autoRemoveData) {
