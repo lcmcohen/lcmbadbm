@@ -13,6 +13,7 @@ import java.awt.event.ComponentEvent;
 import java.io.Serial;
 
 /**
+ * The Panel that displays the data entries of DiskRuns from the Database.
  * @author James
  */
 public class RunPanel extends javax.swing.JPanel {

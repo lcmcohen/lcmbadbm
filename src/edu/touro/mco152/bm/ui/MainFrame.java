@@ -219,7 +219,7 @@ public final class MainFrame extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("jDiskMark");
+        setTitle("BadBM");
 
         mountPanel.setBackground(new java.awt.Color(0, 51, 153));
         mountPanel.setMaximumSize(new java.awt.Dimension(503, 200));
