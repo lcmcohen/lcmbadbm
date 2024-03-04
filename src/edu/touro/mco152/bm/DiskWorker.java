@@ -304,7 +304,11 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         });
     }
 
-
+    /**
+     * Called after doInBackground() is completed, or stops in case of an error, to return the app to idle state.
+     * This method is called on the Event Dispatch Thread. If there was an error, it will be
+     * logged. If the user chose to have the test data files deleted after each run, they will be.
+     */
     @Override
     protected void done() {
         // Obtain final status, might from doInBackground ret value, or SwingWorker error
