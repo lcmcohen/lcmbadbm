@@ -3,7 +3,8 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * Tracks and records progress as a disk read or write is being executed.
+ * Each DiskMark is either of type READ or WRITE.
  */
 public class DiskMark {
 
@@ -14,6 +15,10 @@ public class DiskMark {
     private double cumMin = 0;
     private double cumMax = 0;
     private double cumAvg = 0;
+
+    /**
+     * @param type of operation being benchmarked; read or write
+     */
     DiskMark(MarkType type) {
         this.type = type;
     }

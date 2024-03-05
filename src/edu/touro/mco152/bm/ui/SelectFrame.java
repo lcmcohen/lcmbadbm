@@ -5,7 +5,9 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ *JFrame meant for choosing location to save configuration to.
+ * Handling code will be added in jFileChooser1ActionPerformed in future release.
+ * Main method should be removed once unit testing is added.
  */
 public class SelectFrame extends javax.swing.JFrame {
 
@@ -15,9 +17,11 @@ public class SelectFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form SelectFrame
+     * @param name the title of the form
      */
-    public SelectFrame() {
+    public SelectFrame(String name) {
         initComponents();
+        setTitle(name);
         setLocationRelativeTo(Gui.mainFrame);
         if (App.locationDir == null) {
             App.locationDir = new File(System.getProperty("user.home"));
@@ -26,6 +30,13 @@ public class SelectFrame extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * demonstrating the constructor
+     * @param args args[0] is the title of the form. All other elements are ignored
+     */
+    public static void main(String[] args){
+        SelectFrame selFrame = new SelectFrame(args[0]);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

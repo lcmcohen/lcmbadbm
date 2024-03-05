@@ -100,8 +100,8 @@ public class App {
      * Initialize the GUI Application.
      */
     public static void init() {
-        Gui.mainFrame = new MainFrame();
-        Gui.selFrame = new SelectFrame();
+        Gui.mainFrame = new MainFrame("Main Frame");
+        Gui.selFrame = new SelectFrame("Selection Frame");
         p = new Properties();
         loadConfig();
         System.out.println(App.getConfigString());

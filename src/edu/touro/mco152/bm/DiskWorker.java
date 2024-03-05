@@ -42,8 +42,13 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     // Record any success or failure status returned from SwingWorker (might be us or super)
     Boolean lastStatus = null;  // so far unknown
 
+    /**
+     * Meant for handling troublesome background tasks without burdening the Gui.
+     * @return boolean indicating successful completion.
+     * @throws IOException
+     */
     @Override
-    protected Boolean doInBackground() throws Exception {
+    protected Boolean doInBackground() throws IOException {
 
         /*
           We 'got here' because: 1: End-user clicked 'Start' on the benchmark UI,

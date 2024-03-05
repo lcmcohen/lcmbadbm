@@ -19,6 +19,8 @@ import static java.awt.Font.PLAIN;
 
 /**
  * Creates the MainFrame with methods that enable easy control
+ * Has a main method for testing purposes.
+ * Please remove main method when unit testing is added.
  */
 @SuppressWarnings("rawtypes")
 public final class MainFrame extends javax.swing.JFrame {
@@ -88,7 +90,8 @@ public final class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame(String title) {
+        setTitle(title);
         initComponents();
         ChartPanel chartPanel = Gui.createChartPanel();
         mountPanel.setLayout(new BorderLayout());
@@ -109,6 +112,13 @@ public final class MainFrame extends javax.swing.JFrame {
         orderComboBox.addItem(DiskRun.BlockSequence.RANDOM);
     }
 
+    /**
+     *Creates a MainFrame with the specified title for testing purposes.
+     * @param args args[0] is the title of the MainFrame. All other elements are ignored.
+     */
+    public static void main(String[] args){
+        MainFrame mainFrame = new MainFrame(args[0]);
+    }
     public JPanel getMountPanel() {
         return mountPanel;
     }
