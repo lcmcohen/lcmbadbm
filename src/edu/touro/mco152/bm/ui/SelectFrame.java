@@ -5,7 +5,7 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ * The SelectFrame class represents a JFrame used for selecting directories.
  */
 public class SelectFrame extends javax.swing.JFrame {
 
@@ -77,6 +77,11 @@ public class SelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jFileChooser1ActionPerformed
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Sets the initial directory of the file chooser.
+     *
+     * @param file The initial directory file.
+     */
     void setInitDir(File file) {
         jFileChooser1.setSelectedFile(file);
     }

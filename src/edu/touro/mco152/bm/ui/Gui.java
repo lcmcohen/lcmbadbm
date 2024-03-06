@@ -93,6 +93,10 @@ public final class Gui {
         return chartPanel;
     }
 
+    /**
+     *
+     * @param mark passes in an instance of DiskMark
+     */
     public static void addWriteMark(DiskMark mark) {
         wSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         wAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());

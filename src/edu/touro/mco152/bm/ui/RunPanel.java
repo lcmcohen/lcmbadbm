@@ -123,7 +123,9 @@ public class RunPanel extends javax.swing.JPanel {
                         run.getAvg(),
                 });
     }
-
+    /**
+     * Clears the contents of the table.
+     */
     public void clearTable() {
         DefaultTableModel model = (DefaultTableModel) this.runTable.getModel();
         while (model.getRowCount() > 0) {
