@@ -22,19 +22,24 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 /**
  * Run the disk benchmarking exclusively as a Swing-compliant thread (only one of these threads can run at
  * once.) Must cooperate with Swing to provide and make use of interim and final progress and
- * information, which is also recorded as needed to the persistence store, and log.
+ * information, which is also recorded as needed to the persistence store, send messages to the mainframe via
+ * App and log. Also handles the processed data chunks done by SwingWorker via the process() method and also the state of the
+ *  * GUI and Logic if a user decides to abort a benchmark mid-computation
  * <p>
  * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
  * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
  * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
  * progresses.
  * <p>
- * This class only knows how to do 'read' or 'write' disk benchmarks, all of which is done in doInBackground(). It is instantiated by the
- * startBenchmark() method.
+ * This class only knows how to do 'read' and 'write' disk benchmarks, all of which is done in doInBackground(). DiskWorker
+ * is instantiated in the the startBenchmark() method found in App, however doInBackground is called on a different thread
+ * courtesy of SwingWorker.
  * <p>
  * To be Swing compliant this class extends SwingWorker and is dependant on it. It declares that its final return (when
  * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
  * Swing using an instance of the DiskMark class.
+
+ *
  */
 
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
@@ -42,6 +47,30 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     // Record any success or failure status returned from SwingWorker (might be us or super)
     Boolean lastStatus = null;  // so far unknown
 
+    /**
+     * doInBackground is a SwingWorker method that allows complex operations to work continuously on a seperate thread
+     * in order not to slow down the program. This method is called by SwingWorker, not actually the code itself
+     * when SwingWorkers execute() method is called. doInBackground handles these following operations:
+     * these 2 activities happen throughout the execution of this method:
+     *  - Logs info about the current benchmark
+     *  - Writes messages to the MainFrame from via the app class
+     *  This method also handles these following operations (in order)
+     *  1) retrieves the number of blocks that the user chose to execute to keep track of the benchmark. (the number of the blocks
+     *  will be more depending on if the user chose to do both read and write operations in one benchmarking session. The number of
+     *  blocks will later decide the total number of iterations that will occur to compute data to create the graph to depict
+     *  the benchmark
+     *  Depending on if the user decided to do a read, write or a combination of both operations, will determine the next stages
+     *  of the operations:
+     *  there will be a loop and it will iterate depending on the number of blocks the user decided. Each iteration will keep track of how long it
+     *  took to do a benchmark. At the end of each iteration the total time and also the total number of writes written in that mark will be
+     *  recorded and also sent to the GUI (via the publish() method given by SwingWorker and also displayed by the GUI via the GUI class).
+     *  There will be a nested loop that will determine  the total number of units and bytes written within that
+     *  current mark and then it will call the SwingWorkers setProgress() method. This entire operation within this paragraph will be repeated if
+     *  the user decided to do both a read and write operation
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
     protected Boolean doInBackground() throws Exception {
 
@@ -308,7 +337,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     /**
      * Called when doInBackGround method of SwingWorker successfully or unsuccessfully finishes or is aborted.
      * This method is called by Swing and has access to the get method within it's scope, which returns the computed
-     * result of the doInBackground method.
+     * result of the doInBackground method. When this method is called, the computation within doInBackground is stopped.
      */
     @Override
     protected void done() {
@@ -326,6 +355,10 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         Gui.mainFrame.adjustSensitivity();
     }
 
+    /**
+     * this method returns the last known status of the game.
+     * @return the status of the application
+     */
     public Boolean getLastStatus() {
         return lastStatus;
     }

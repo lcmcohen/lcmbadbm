@@ -17,8 +17,9 @@ import java.io.Serial;
 import java.text.NumberFormat;
 
 /**
- * Creates and populates a graph with data from the current run, and
- * stores gui references for easy access.
+ * Creates and populates a graph with read and write data from the current run. The , and
+ * stores gui references for easy access. Also its responsible for clearing the cart when
+ * a user decides to do a new benchmark.
  */
 public final class Gui {
 
@@ -31,6 +32,12 @@ public final class Gui {
     public static JProgressBar progressBar = null;
     public static RunPanel runPanel = null;
 
+    /**
+     * this method creates a new chartPanel that adds a series of lines that go across the chart
+     * that represents the Bandwidth write/read measurements per second
+     *
+     * @return a panel that holds the chart
+     */
     public static ChartPanel createChartPanel() {
 
         wSeries = new XYSeries("Writes");
@@ -93,6 +100,11 @@ public final class Gui {
         return chartPanel;
     }
 
+    /**
+     * this method is responsible for plotting and displaying write marks to the chart panel after doing
+     * a current iteration of a current benchmark
+     * @param mark the current write mark that will be plotted on the panel
+     */
     public static void addWriteMark(DiskMark mark) {
         wSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         wAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());
@@ -103,7 +115,11 @@ public final class Gui {
         Gui.mainFrame.refreshWriteMetrics();
         System.out.println(mark.toString());
     }
-
+    /**
+     * this method is responsible for plotting and displaying read marks to the chart panel after doing
+     * a current iteration of a current benchmark
+     * @param mark the current read mark that will be plotted on the panel
+     */
     public static void addReadMark(DiskMark mark) {
         rSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         rAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());
