@@ -12,6 +12,8 @@ import java.util.List;
 /**
  * Stores information about the results of a single disk
  * write/read test
+ *
+ * This class also seems a lot better from a Srp perspective as it only deals with storing the results.
  */
 @Entity
 @Table(name = "DiskRun")
@@ -90,6 +92,8 @@ public class DiskRun implements Serializable {
     /**
      * Deletes the history of all disk transactions done so far
      * @return the number of disk transactions deleted
+     *
+     * Another very good method that only does one thing.
      */
     public static int deleteAll() {
         EntityManager em = EM.getEntityManager();
