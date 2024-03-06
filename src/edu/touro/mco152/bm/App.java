@@ -16,8 +16,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * The `App` class serves as the primary class for managing global variables, main, and common methods.
+ * It includes configuration settings, initialization methods, and utility functions.
  */
+
 public class App {
 
     public static final String APP_CACHE_DIR = System.getProperty("user.home") + File.separator + ".jDiskMark";
@@ -51,8 +53,14 @@ public class App {
     public static double rMax = -1, rMin = -1, rAvg = -1;
 
     /**
+     * Main method to start the application.
+     * <p>
+     * Sets up the Nimbus look and feel for the GUI components.
+     * If Nimbus is not available, it falls back to the system look and feel.
+     *
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
 
         /* Set the Nimbus look and feel */
