@@ -11,7 +11,8 @@ import java.util.List;
 
 /**
  * Stores information about the results of a single disk
- * write/read test
+ * write/read test. Supports three types (enum defined in the class), READ, WRITE, and READ_WRITE.
+ * BlockSequence can be SEQUENTIAL or RANDOM. Getters generally return strings for human readability.
  */
 @Entity
 @Table(name = "DiskRun")
@@ -99,6 +100,10 @@ public class DiskRun implements Serializable {
         return deletedCount;
     }
 
+    /**
+     * Converts data on run into a human-readable string.
+     * @return a human-readable string
+     */
     @Override
     public String toString() {
         return "Run(" + getIoMode() + "," + getBlockOrder() + "): " + totalMarks + " run avg: " + getRunAvg();
@@ -114,6 +119,10 @@ public class DiskRun implements Serializable {
         return getRunMin() == -1 ? "- -" : DF.format(getRunMin());
     }
 
+    /**
+     * sets the amount of time for the run.
+     * @param min number of minutes; is typed as a double for granularity so that seconds can be recorded.
+     */
     public void setMin(double min) {
         setRunMin(min);
     }
