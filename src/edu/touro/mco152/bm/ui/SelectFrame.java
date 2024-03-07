@@ -5,7 +5,8 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ * JFrame subclass for choosing a file to save to.
+ *handling code still needs to be added to jFileChooser1ActionPerformed
  */
 public class SelectFrame extends javax.swing.JFrame {
 
@@ -14,7 +15,7 @@ public class SelectFrame extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
 
     /**
-     * Creates new form SelectFrame
+     * Creates new form SelectFrame and handles positioning in the overall gui.
      */
     public SelectFrame() {
         initComponents();
@@ -77,6 +78,10 @@ public class SelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jFileChooser1ActionPerformed
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * chooses the default location for the SelectFrame before user input.
+     * @param file the default file
+     */
     void setInitDir(File file) {
         jFileChooser1.setSelectedFile(file);
     }

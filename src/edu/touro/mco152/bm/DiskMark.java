@@ -3,7 +3,7 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * Tracks and records progress as a disk read or write is being executed.
  */
 public class DiskMark {
 
