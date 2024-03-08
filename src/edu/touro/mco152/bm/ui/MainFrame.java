@@ -18,7 +18,8 @@ import static edu.touro.mco152.bm.App.dataDir;
 import static java.awt.Font.PLAIN;
 
 /**
- * Creates the MainFrame with methods that enable easy control
+ * The MainFrame class represents the main JFrame of the application.
+ * Enable with methods for easy control
  */
 @SuppressWarnings("rawtypes")
 public final class MainFrame extends javax.swing.JFrame {
