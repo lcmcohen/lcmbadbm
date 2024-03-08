@@ -5,7 +5,12 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
+ * The SelectFrame class provides GUI for selecting a directory.
+ * It extends {@link javax.swing.JFrame} and  {@link javax.swing.JFileChooser} to
+ * allow users to select a directory to store benchmark Data.
  *
+ * The class is responsible for initializing the frame's components, setting the file chooser
+ * to directory mode, and handling the actions performed within the file chooser.
  */
 public class SelectFrame extends javax.swing.JFrame {
 
@@ -14,7 +19,9 @@ public class SelectFrame extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
 
     /**
-     * Creates new form SelectFrame
+     * Constructs a new SelectFrame. The constructor initializes the GUI and  sets the
+     * frame's location relative to the main application frame, and  then defaults the directory
+     * selection to the user's home directory if there are no previous selections
      */
     public SelectFrame() {
         initComponents();
