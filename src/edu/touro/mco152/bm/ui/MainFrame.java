@@ -829,6 +829,12 @@ public final class MainFrame extends javax.swing.JFrame {
         msgTextArea.setText("");
     }
 
+    /**
+     * Adjusts the sensitivity of the GUI based on the current state of the application.
+     * If the application is in the DISK_TEST_STATE, the start button is changed to "Cancel",
+     * and the other buttons are disabled. If the application is in the IDLE_STATE, the start button
+     * text is changed to "Start", and the other buttons are enabled.
+     */
     public void adjustSensitivity() {
         if (App.state == App.State.DISK_TEST_STATE) {
             startButton.setText("Cancel");
