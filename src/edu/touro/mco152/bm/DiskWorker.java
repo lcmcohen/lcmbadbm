@@ -20,22 +20,19 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 /**
- * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
- * once.) Cooperates with Swing to provide and make use of interim and final progress and
- * information, which is also recorded as needed to the persistence store, and log.
+ * DiskWorker facilitates disk benchmarking operations within a Swing-compliant thread. Only one thread of this
+ * type can execute at a time. It collaborates with the Swing framework to provide interim and final progress updates
+ * and information, which are also stored as necessary in the persistence store and log.
  * <p>
- * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
- * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
- * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
- * progresses.
+ * Relies on static values set in the App and Gui classes to define the benchmark to be performed.
+ * At a higher level, the DiskRun class manages and persists information about each benchmark run, while the DiskMark
+ * class tracks the results of each iteration, displayed by the UI as the benchmark progresses.
  * <p>
- * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
- * startBenchmark() method.
- * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
- * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
- * Swing using an instance of the DiskMark class.
+ * Specializes in 'read' or 'write' disk benchmarks and is instantiated using the startBenchmark method.
+ * As a SwingWorker, it declares that its final return type, when doInBackground method completes, is Boolean, and intermediate
+ * results are communicated to Swing using instances of the DiskMark class.
  */
+
 
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
 
@@ -324,6 +321,12 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
         });
     }
 
+    /**
+     * Called after background processing is finished. Handles cleanup tasks,
+     * updates the UI, and records final task status. If autoRemoveData is
+     * true, deletes the data directory. Adjusts the application state and
+     * UI sensitivity.
+     */
 
 
     /**
