@@ -32,7 +32,7 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
  * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
  * startBenchmark() method.
  * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
+ * To be Swing compliant this class will instantiate new SwingWorkers and declare that its final return (when
  * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
  * Swing using an instance of the DiskMark class.
  */
@@ -40,7 +40,7 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
 
     // Record any success or failure status returned from SwingWorker (might be us or super)
-    Boolean lastStatus = null;  // so far unknown
+    Boolean previousStatus = null;  // so far unknown
 
     /**
 
@@ -57,7 +57,8 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
      the total time and write count are recorded and sent to the GUI via SwingWorker's publish() method, subsequently displayed by the
      GUI class.
      A nested loop calculates the total number of units and bytes written within the current iteration, updating the progress
-     via SwingWorker's setProgress() method. This entire process repeats if the user selected both read and write operations.
+     via SwingWorker's setProgress() method. This entire process repeats if the user selected both read and write operations,
+     unless multiple SwingWorkers are created.
      @return
      @throws Exception
      */
@@ -94,10 +95,11 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
             }
         }
 
-        DiskMark wMark, rMark;  // declare vars that will point to objects used to pass progress to UI
+        DiskMark writeMark, readMark;  // declare vars that will point to objects used to pass progress to UI
 
         Gui.updateLegend();  // init chart legend info
 
+        //TODO describe what this is testing
         if (App.autoReset) {
             App.resetTestData();
             Gui.resetTestData();
@@ -138,8 +140,8 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
                     testFile = new File(dataDir.getAbsolutePath()
                             + File.separator + "testdata" + m + ".jdm");
                 }
-                wMark = new DiskMark(WRITE);    // starting to keep track of a new benchmark
-                wMark.setMarkNum(m);
+                writeMark = new DiskMark(WRITE);    // starting to keep track of a new benchmark
+                writeMark.setMarkNum(m);
                 long startTime = System.nanoTime();
                 long totalBytesWrittenInMark = 0;
 
@@ -180,21 +182,21 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
                 long elapsedTimeNs = endTime - startTime;
                 double sec = (double) elapsedTimeNs / (double) 1000000000;
                 double mbWritten = (double) totalBytesWrittenInMark / (double) MEGABYTE;
-                wMark.setBwMbSec(mbWritten / sec);
-                msg("m:" + m + " write IO is " + wMark.getBwMbSecAsString() + " MB/s     "
+                writeMark.setBwMbSec(mbWritten / sec);
+                msg("m:" + m + " write IO is " + writeMark.getBwMbSecAsString() + " MB/s     "
                         + "(" + Util.displayString(mbWritten) + "MB written in "
                         + Util.displayString(sec) + " sec)");
-                App.updateMetrics(wMark);
+                App.updateMetrics(writeMark);
 
                 /*
                   Let the GUI know the interim result described by the current Mark
                  */
-                publish(wMark);
+                publish(writeMark);
 
                 // Keep track of statistics to be displayed and persisted after all Marks are done.
-                run.setRunMax(wMark.getCumMax());
-                run.setRunMin(wMark.getCumMin());
-                run.setRunAvg(wMark.getCumAvg());
+                run.setRunMax(writeMark.getCumMax());
+                run.setRunMin(writeMark.getCumMin());
+                run.setRunAvg(writeMark.getCumAvg());
                 run.setEndTime(new Date());
             } // END outer loop for specified duration (number of 'marks') for WRITE benchmark
 
@@ -247,8 +249,8 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
                     testFile = new File(dataDir.getAbsolutePath()
                             + File.separator + "testdata" + m + ".jdm");
                 }
-                rMark = new DiskMark(READ);  // starting to keep track of a new benchmark
-                rMark.setMarkNum(m);
+                readMark = new DiskMark(READ);  // starting to keep track of a new benchmark
+                readMark.setMarkNum(m);
                 long startTime = System.nanoTime();
                 long totalBytesReadInMark = 0;
 
@@ -281,15 +283,15 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
                 long elapsedTimeNs = endTime - startTime;
                 double sec = (double) elapsedTimeNs / (double) 1000000000;
                 double mbRead = (double) totalBytesReadInMark / (double) MEGABYTE;
-                rMark.setBwMbSec(mbRead / sec);
-                msg("m:" + m + " READ IO is " + rMark.getBwMbSec() + " MB/s    "
+                readMark.setBwMbSec(mbRead / sec);
+                msg("m:" + m + " READ IO is " + readMark.getBwMbSec() + " MB/s    "
                         + "(MBread " + mbRead + " in " + sec + " sec)");
-                App.updateMetrics(rMark);
-                publish(rMark);
+                App.updateMetrics(readMark);
+                publish(readMark);
 
-                run.setRunMax(rMark.getCumMax());
-                run.setRunMin(rMark.getCumMin());
-                run.setRunAvg(rMark.getCumAvg());
+                run.setRunMax(readMark.getCumMax());
+                run.setRunMin(readMark.getCumMin());
+                run.setRunAvg(readMark.getCumAvg());
                 run.setEndTime(new Date());
             }
 
@@ -335,7 +337,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     protected void done() {
         // Obtain final status, might from doInBackground ret value, or SwingWorker error
         try {
-            lastStatus = super.get();   // record for future access
+            previousStatus = super.get();   // record for future access
         } catch (Exception e) {
             Logger.getLogger(App.class.getName()).warning("Problem obtaining final status: " + e.getMessage());
         }
@@ -351,7 +353,7 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
      Retrieves the most recent status of the game.
      @return The application's current status.
      */
-    public Boolean getLastStatus() {
-        return lastStatus;
+    public Boolean getPreviousStatus() {
+        return previousStatus;
     }
 }
