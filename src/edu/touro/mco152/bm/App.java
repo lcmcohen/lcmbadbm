@@ -16,10 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Primary class for global variables, main and common methods. App initializes the GUI application,
+ * loads and gets properties configuration data, and instantiates a worker for data processing.
+ * App is dependent on the DiskWorker, DiskMark, Gui, MainFrame(and by extension, RunPanel), and SelectFrame classes.
  */
 public class App {
-
+//TODO add comments explaining these variables
     public static final String APP_CACHE_DIR = System.getProperty("user.home") + File.separator + ".jDiskMark";
     public static final String PROPERTIESFILE = "jdm.properties";
     public static final String DATADIRNAME = "jDiskMarkData";
@@ -193,7 +195,7 @@ public class App {
     }
     /**
      * Gets data about the configuration and returns it in String form.
-     *
+     * Processes data about the configuration to make it human-readable.
      * @return a comprehensive description of the configuration
      */
     public static String getConfigString() {

@@ -10,6 +10,7 @@
  The {@code GUI} class is instantiated within the {@code App} class, establishing a dependency. Furthermore,
  the {@code App} class is closely coupled with both the {@code GUI} class and the {@code MainFrame} class.
  The {@code MainFrame} class is reliant on and instantiated by the {@code GUI} class.
+ This prevents the modules from being interchangeable with outside implementations, if the need arises.
  */
 
 package edu.touro.mco152.bm.ui;
