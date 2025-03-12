@@ -7,12 +7,18 @@ import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 /**
- * Provides utility methods for jDiskMark
- * to easily generate and analyze data, and to
- * conduct various functions to directories and files
+ * Utility class providing common helper methods to jDiskMark.
+ * <p>
+ *     This class includes reusable functions for generating,
+ *     analyzing, and validating data, file operations,
+ *     random number generation, and specific disk information retrieval.
+ *     Including other support tasks essential to the benchmarking process.
+ * </p>
+ *
+ * @author Menachem Berkowitz
  */
+
 public class Util {
 
     static final DecimalFormat DF = new DecimalFormat("###.##");

@@ -16,7 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Primary class for global variables, main and common methods for the badbm application.
+ *
+ * <p>
+ *    This class serves as the entry point for the application and manages global configurations,
+ *    application state, and initialization of the GUI components. It also provides utility methods
+ *    for loading and saving configuration settings, managing benchmark states, and handling disk operations.
+ * </p>
  */
 public class App {
 
@@ -51,7 +57,13 @@ public class App {
     public static double rMax = -1, rMin = -1, rAvg = -1;
 
     /**
-     * @param args the command line arguments
+     * Starts the badbm application.
+     * <p>
+     *     Parses the command line arguments and initiates the benchmarking
+     *     process by delegating the various tasks to the appropriate class.
+     * </p>
+     * 
+     * @param args the command line arguments passed to the application.
      */
     public static void main(String[] args) {
 
@@ -80,9 +92,14 @@ public class App {
     }
 
     /**
-     * Get the version from the build properties. Defaults to 0.0 if not found.
+     * Retrieves the application version from the build properties.
+     * <p>
+     *     If the version is not found, or the file is not readable
+     *     the method defaults to return {@code "0.0"}.
+     * </p>
      *
-     * @return
+     * @return the application version as a {@code String} or {@code "0.0"}
+     *          if the version is not found.
      */
     public static String getVersion() {
         Properties bp = new Properties();
