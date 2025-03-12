@@ -62,7 +62,7 @@ public class App {
      *     Parses the command line arguments and initiates the benchmarking
      *     process by delegating the various tasks to the appropriate class.
      * </p>
-     * 
+     *
      * @param args the command line arguments passed to the application.
      */
     public static void main(String[] args) {
