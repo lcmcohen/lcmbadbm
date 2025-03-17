@@ -1,9 +1,8 @@
-package edu.touro.mco152.bm.ui;
+package main.java.edu.touro.mco152.bm.ui;
 
-import edu.touro.mco152.bm.App;
-import edu.touro.mco152.bm.Util;
-import edu.touro.mco152.bm.persist.DiskRun;
-import edu.touro.mco152.bm.persist.DiskRun.BlockSequence;
+import main.java.edu.touro.mco152.bm.App;
+import main.java.edu.touro.mco152.bm.Util;
+import main.java.edu.touro.mco152.bm.persist.DiskRun;
 import org.jfree.chart.ChartPanel;
 
 import javax.swing.*;
@@ -14,7 +13,6 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static edu.touro.mco152.bm.App.dataDir;
 import static java.awt.Font.PLAIN;
 
 /**
@@ -69,14 +67,14 @@ public final class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox numFilesCombo;
     private javax.swing.JButton openLocButton;
     private javax.swing.JMenu optionMenu;
-    private javax.swing.JComboBox<BlockSequence> orderComboBox;
+    private javax.swing.JComboBox<DiskRun.BlockSequence> orderComboBox;
     private javax.swing.JPanel progressPanel;
     private javax.swing.JLabel rAvgLabel;
     private javax.swing.JLabel rMaxLabel;
     private javax.swing.JLabel rMinLabel;
     private javax.swing.JButton resetButton;
     private javax.swing.JMenuItem resetSequenceMenuItem;
-    private edu.touro.mco152.bm.ui.RunPanel runPanel;
+    private RunPanel runPanel;
     private javax.swing.JCheckBoxMenuItem showMaxMinCheckBoxMenuItem;
     private javax.swing.JButton startButton;
     private javax.swing.JTabbedPane tabbedPane;
@@ -179,7 +177,7 @@ public final class MainFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         resetButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        orderComboBox = new javax.swing.JComboBox<BlockSequence>();
+        orderComboBox = new javax.swing.JComboBox<DiskRun.BlockSequence>();
         jLabel14 = new javax.swing.JLabel();
         wMinLabel = new javax.swing.JLabel();
         wMaxLabel = new javax.swing.JLabel();
@@ -188,7 +186,7 @@ public final class MainFrame extends javax.swing.JFrame {
         rMaxLabel = new javax.swing.JLabel();
         rAvgLabel = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
-        runPanel = new edu.touro.mco152.bm.ui.RunPanel();
+        runPanel = new RunPanel();
         eventScrollPane = new javax.swing.JScrollPane();
         msgTextArea = new javax.swing.JTextArea();
         locationPanel = new javax.swing.JPanel();
@@ -746,7 +744,7 @@ public final class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_autoRemoveCheckBoxMenuItemActionPerformed
 
     private void deleteDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataMenuItemActionPerformed
-        Util.deleteDirectory(dataDir);
+        Util.deleteDirectory(App.dataDir);
     }//GEN-LAST:event_deleteDataMenuItemActionPerformed
 
     private void autoResetCheckBoxMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoResetCheckBoxMenuItemActionPerformed

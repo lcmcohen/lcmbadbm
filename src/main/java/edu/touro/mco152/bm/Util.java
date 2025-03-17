@@ -1,4 +1,4 @@
-package edu.touro.mco152.bm;
+package main.java.edu.touro.mco152.bm;
 
 
 import java.io.*;
