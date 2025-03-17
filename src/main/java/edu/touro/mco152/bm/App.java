@@ -1,9 +1,9 @@
-package edu.touro.mco152.bm;
+package main.java.edu.touro.mco152.bm;
 
-import edu.touro.mco152.bm.persist.DiskRun;
-import edu.touro.mco152.bm.ui.Gui;
-import edu.touro.mco152.bm.ui.MainFrame;
-import edu.touro.mco152.bm.ui.SelectFrame;
+import main.java.edu.touro.mco152.bm.persist.DiskRun;
+import main.java.edu.touro.mco152.bm.ui.Gui;
+import main.java.edu.touro.mco152.bm.ui.MainFrame;
+import main.java.edu.touro.mco152.bm.ui.SelectFrame;
 
 import javax.swing.SwingWorker.StateValue;
 import javax.swing.*;
@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Primary class for global variables, and is the entry point for the program containing the main and common methods.
+ * sets up the necessary configurations and instantiates the appropriate objects
+ *
  */
 public class App {
 
@@ -50,10 +52,13 @@ public class App {
     public static double wMax = -1, wMin = -1, wAvg = -1;
     public static double rMax = -1, rMin = -1, rAvg = -1;
 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+
 
         /* Set the Nimbus look and feel */
         try {

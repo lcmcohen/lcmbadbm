@@ -1,9 +1,11 @@
-package edu.touro.mco152.bm;
+package main.java.edu.touro.mco152.bm;
 
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * Tracks and records progress as a disk read or write is being executed.
+ * Holds various data fields and properties to that are necessary for benchmarking as
+ * well as there appropriate setters and getters.
  */
 public class DiskMark {
 
@@ -42,6 +44,7 @@ public class DiskMark {
     public int getMarkNum() {
         return markNum;
     }
+    
 
     public void setMarkNum(int markNum) {
         this.markNum = markNum;
@@ -81,3 +84,4 @@ public class DiskMark {
 
     public enum MarkType {READ, WRITE}
 }
+
