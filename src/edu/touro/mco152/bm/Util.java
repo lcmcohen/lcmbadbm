@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Provides utility methods for jDiskMark
+ * The {@code Util} class provides utility methods for jDiskMark
  * to easily generate and analyze data, and to
  * conduct various functions to directories and files
  */

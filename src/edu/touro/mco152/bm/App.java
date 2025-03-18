@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * This class is responsible for initializing the application, handling configuration settings,
  * managing global variables, and coordinating the execution of disk benchmarking tests.
  * It provides methods for setting up and saving configuration, running benchmarks,
- * and interacting with the graphical user interface.
+ * and interacting with the graphical user interface like the functions of starting or canceling tests.
  * This is the class that gets run to start the program.
  * </p>
  */
@@ -104,7 +104,9 @@ public class App {
     }
 
     /**
-     * Initialize the GUI Application.
+     * Initializes the GUI Application,
+     * sets the progress bar, and
+     * loads saved benchmarks
      */
     public static void init() {
         Gui.mainFrame = new MainFrame();
@@ -364,6 +366,10 @@ public class App {
         return (long) blockSizeKb * numOfBlocks * numOfMarks;
     }
 
+    /**
+     * Updates the maximum, minimum, and average bandwidth values for read/write tests
+     * @param mark
+     */
     public static void updateMetrics(DiskMark mark) {
         if (mark.type == DiskMark.MarkType.WRITE) {
             if (wMax == -1 || wMax < mark.getBwMbSec()) {

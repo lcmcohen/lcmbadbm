@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Stores information about the results of a single disk
- * write/read test
+ * The {@code DiskRun} class stores information about the results of a single disk write/read test
  */
 @Entity
 @Table(name = "DiskRun")
