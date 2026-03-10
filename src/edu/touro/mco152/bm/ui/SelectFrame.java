@@ -5,7 +5,9 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ * GUI window that allows the user to select directory for running the benchmark.
+ * When directory is selected, the application updates the configuration and
+ * sets benchmark data location.
  */
 public class SelectFrame extends javax.swing.JFrame {
 
