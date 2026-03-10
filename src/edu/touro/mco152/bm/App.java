@@ -225,10 +225,10 @@ public class App {
         });
     }
 
-    /*
-    * Deletes all previously saved bm runs, and reloads the saved list to reflect changes.
-    * After calling this method, there will be no saved runs until new runs are performed.
-    * */
+    /**
+     * Deletes all previously saved bm runs, and reloads the saved list to reflect changes.
+     * After calling this method, there will be no saved runs until new runs are performed.
+     */
     public static void clearSavedRuns() {
         DiskRun.deleteAll();
 
@@ -247,7 +247,7 @@ public class App {
         worker.cancel(true);
     }
 
-    /*
+    /**
     * starts the benchmark process.
     *
     * This method checks weather or not a benchmark process is already running,
