@@ -82,7 +82,7 @@ public class App {
     /**
      * Get the version from the build properties. Defaults to 0.0 if not found.
      *
-     * @return
+     * @return version from build properties
      */
     public static String getVersion() {
         Properties bp = new Properties();
@@ -225,6 +225,10 @@ public class App {
         });
     }
 
+    /*
+    * Deletes all previously saved bm runs, and reloads the saved list to reflect changes.
+    * After calling this method, there will be no saved runs until new runs are performed.
+    * */
     public static void clearSavedRuns() {
         DiskRun.deleteAll();
 
@@ -243,6 +247,14 @@ public class App {
         worker.cancel(true);
     }
 
+    /*
+    * starts the benchmark process.
+    *
+    * This method checks weather or not a benchmark process is already running,
+    * prepares the data to be used, for bm files, updates the application state,
+    * and initializes a worker thread that performs disk bm in the backround, while
+    * updating GUI progress
+    * */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress

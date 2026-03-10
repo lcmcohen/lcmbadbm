@@ -17,8 +17,8 @@ import java.io.Serial;
 import java.text.NumberFormat;
 
 /**
- * Creates and populates a graph with data from the current run, and
- * stores gui references for easy access.
+ * Creates a graph and fills it with data and results from current run,
+ * and allows for easy access by storing a reference to the GUI
  */
 public final class Gui {
 
