@@ -3,7 +3,13 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * ֿReturns the progress of the DiskWorker in various formats.
+ * This class holds variables that define the progress of the
+ * read and write operations. It includes setters for each of
+ * these variables, as well as getters.
+ * The getters enable the variables to be returned as doubles
+ * (their actual data type) or to be formatted into a string,
+ * by use of the DecimalFormat class.
  */
 public class DiskMark {
 
@@ -22,7 +28,14 @@ public class DiskMark {
     public String toString() {
         return "Mark(" + type + "): " + getMarkNum() + " bwMbSec: " + getBwMbSecAsString() + " avg: " + getAvgAsString();
     }
-
+    /**
+     * Returns the megabytes per second of the operation as a string.
+     * This method is a modified getter. It is used to get the double
+     * value of the poorly named BwMbSec, which is the megabytes
+     * processed per second. However, it returns it as a
+     * formatted String, using the DecimalFormat class.
+     * @Return    a string representing the megabytes processed per second
+    */
     String getBwMbSecAsString() {
         return df.format(getBwMbSec());
     }
