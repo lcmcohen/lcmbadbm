@@ -20,21 +20,9 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 /**
- * Execute disk benchmarking as a Swing-compliant thread (only one of these threads can run at
- * once.) Cooperates with Swing to provide and make use of interim and final progress and
- * information, which is also recorded as needed to the persistence store, and log.
+ * Execute disk benchmarking as a Swing-compliant thread 
  * <p>
- * Depends on static values that describe the benchmark to be done having been set in App and Gui classes.
- * The DiskRun class is used to keep track of and persist info about each benchmark at a higher level (a run),
- * while the DiskMark class described each iteration's result, which is displayed by the UI as the benchmark run
- * progresses.
- * <p>
- * This class only knows how to do 'read' or 'write' disk benchmarks. It is instantiated by the
- * startBenchmark() method.
- * <p>
- * To be Swing compliant this class extends SwingWorker and declares that its final return (when
- * doInBackground() is finished) is of type Boolean, and declares that intermediate results are communicated to
- * Swing using an instance of the DiskMark class.
+ * Runs read and write benchmarking tests.
  */
 
 public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
@@ -42,6 +30,11 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     // Record any success or failure status returned from SwingWorker (might be us or super)
     Boolean lastStatus = null;  // so far unknown
 
+    /**
+     * Prepare files and variables to be used throughout the tests
+     * 
+     * @return Boolean of task completion status (true if successful, false if failed)
+     */
     @Override
     protected Boolean doInBackground() throws Exception {
 
@@ -305,6 +298,9 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     }
 
 
+    /**
+     * Processes to run clean-up when benchmarking is finished
+     */
     @Override
     protected void done() {
         // Obtain final status, might from doInBackground ret value, or SwingWorker error
