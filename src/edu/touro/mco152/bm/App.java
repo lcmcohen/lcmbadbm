@@ -1,3 +1,7 @@
+/**
+ * Contains the core classes for badBM, including 
+ * main project methods and tools
+ */
 package edu.touro.mco152.bm;
 
 import edu.touro.mco152.bm.persist.DiskRun;
@@ -16,7 +20,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Entry point for the application
+ * <p> 
+ * This class contains the main method that starts the program. 
+ * In its current state, the class also performs many benchmark 
+ * methods
  */
 public class App {
 
@@ -243,6 +251,12 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * Initializes benchmark tracking
+     * <p>
+     * Creates DiskWorker object that will be responsible for 
+     * executing benchmarking
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
