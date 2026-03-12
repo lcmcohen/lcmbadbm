@@ -3,7 +3,11 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * Manages disk benchmark operations including sequential and random I/O tests.
+ * Provides configurable block sizes and file sizes for performance analysis.
+ *
+ * @author MCON152 Class Fall 2026
+ * @version 1.0
  */
 public class DiskMark {
 
@@ -23,6 +27,11 @@ public class DiskMark {
         return "Mark(" + type + "): " + getMarkNum() + " bwMbSec: " + getBwMbSecAsString() + " avg: " + getAvgAsString();
     }
 
+    /**
+     * Returns the bandwidth measurement for this mark in megabytes per second.
+     *
+     * @return the calculated bandwidth in MB/s, or 0.0 if not yet measured
+     */
     String getBwMbSecAsString() {
         return df.format(getBwMbSec());
     }
