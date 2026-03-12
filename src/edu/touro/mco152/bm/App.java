@@ -17,6 +17,9 @@ import java.util.logging.Logger;
 
 /**
  * Primary class for global variables, main and common methods.
+ *
+ * @author MCON152 Class Fall 2026
+ * @version 1.0
  */
 public class App {
 
@@ -243,6 +246,10 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * Initializes and starts a benchmark run based on the current UI settings.
+     * Spawns a background SwingWorker to avoid blocking the Event Dispatch Thread.
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
