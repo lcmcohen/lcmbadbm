@@ -16,7 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Stores application configuration and provides methods
+ * used to set up and control the disk benchmark application
  */
 public class App {
 
@@ -80,9 +81,9 @@ public class App {
     }
 
     /**
-     * Get the version from the build properties. Defaults to 0.0 if not found.
+     * Gets the application version from the build properties file.
      *
-     * @return
+     * @return the application version, or "0.0" if the version cannot be found
      */
     public static String getVersion() {
         Properties bp = new Properties();
