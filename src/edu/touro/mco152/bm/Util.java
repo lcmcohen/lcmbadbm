@@ -36,7 +36,13 @@ public class Util {
         return (path.delete());
     }
 
-
+    /**
+    * Returns a random int between (inclusive) two numbers.
+    * This method is called with two parameters. The returned value will be a random int in between inclusive of those two parameters.
+    * @param    min    The minimum integer the random int can be.
+    * @param    max    The maximum integer the random int can be.
+    * @return          The random int in the specified inclusive range.
+    */
     public static int randInt(int min, int max) {
 
         // Usually this can be a field rather than a method variable

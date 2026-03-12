@@ -16,7 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * The entry point for the program.
+ * This class is the main class for the great badBM project.
+ * It gets command line and config variables, sets up the GUI,
+ * calls a DiskWorker object to run tests, and sets up the GUI
+ * to display the results.
+ @ See DiskWorker.java
+ @ See Gui.java
  */
 public class App {
 
