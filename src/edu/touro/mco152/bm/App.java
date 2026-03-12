@@ -17,6 +17,11 @@ import java.util.logging.Logger;
 
 /**
  * Primary class for global variables, main and common methods.
+ * this is the controller class for the badbm
+ * it's responsible for initializing the GUI, all config settings
+ * running the benchmark execution, and handling the connection between the GUI and benchmark
+ *
+ * @author Reuvi Kupchik
  */
 public class App {
 
@@ -80,9 +85,12 @@ public class App {
     }
 
     /**
-     * Get the version from the build properties. Defaults to 0.0 if not found.
+     * Get the version from the build properties file
      *
-     * @return
+     * this method tries to retrieve the version number from the properties file
+     * but if the file can not be read or found then it returns a default version number
+     *
+     * @return the application version string, or "0.0" if not available
      */
     public static String getVersion() {
         Properties bp = new Properties();
@@ -243,6 +251,16 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * starts a new disk benchmark test.
+     *
+     * this method checks that no other test is running
+     * then sets up the disk for benchmark test files
+     * then initializes the new benchmark test,
+     * then sets up disk worker test
+     * then finally executes the Swing worker
+     *
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
