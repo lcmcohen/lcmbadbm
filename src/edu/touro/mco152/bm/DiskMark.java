@@ -34,7 +34,7 @@ public class DiskMark {
      * value of the poorly named BwMbSec, which is the megabytes
      * processed per second. However, it returns it as a
      * formatted String, using the DecimalFormat class.
-     * @Return    a string representing the megabytes processed per second
+     * @return    a string representing the megabytes processed per second
     */
     String getBwMbSecAsString() {
         return df.format(getBwMbSec());
