@@ -9,8 +9,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utility methods for jDiskMark
-
+ * Utility class with static helper methods for global use.
  */
 public class Util {
 
@@ -48,7 +47,11 @@ public class Util {
         return rand.nextInt((max - min) + 1) + min;
     }
 
-
+    /**
+     * Formats a {@code double} to display as a {@code String} with 2 digits of decimal precision, rounding the last digit if necessary.
+     * @param num the {@code double}-precision number
+     * @return a formatted {@code String} representing the inputted decimal number with 2 digits of precision.
+     */
     public static String displayString(double num) {
         return DF.format(num);
     }

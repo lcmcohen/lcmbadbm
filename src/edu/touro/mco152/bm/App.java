@@ -16,7 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Primary class for global variables, main and common methods.
+ * Primary class containing insertion point main method, a plethora of global variables and constants, as well as some helper methods.
+ * @TODO: Split into multiple, smaller classes to subscribe to SRP.
  */
 public class App {
 
@@ -235,6 +236,9 @@ public class App {
         Gui.mainFrame.msg(message);
     }
 
+    /**
+     * Cancels the current worker thread, interrupting it if running.
+     */
     public static void cancelBenchmark() {
         if (worker == null) {
             msg("worker is null abort...");
@@ -243,6 +247,11 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+    * Instantiates and executes a DiskWorker thread, with a {@link java.beans.PropertyChangeListener PropertyChangeListener} watching to update the GUI.
+    * <p>
+    * If a benchmark is already in progress, or if the data area has not yet been set up, the function aborts.
+    */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress
