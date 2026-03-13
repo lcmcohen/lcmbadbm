@@ -3,7 +3,15 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * this class represents the data for one benchmark test.
+ *
+ * this measures the in megabytes per second the read or write for single
+ * benchmarking test. It also measures other statistics like the min, max, and avg
+ * over all benchmark tests.
+ *
+ * there are also helper methods to help format the values for display in the UI.
+ *
+ * @author Reuvi Kupchik.
  */
 public class DiskMark {
 
@@ -47,10 +55,20 @@ public class DiskMark {
         this.markNum = markNum;
     }
 
+    /**
+     * basic getter that returns the measured disk bandwidth for this mark.
+     *
+     * @return the bandwidth in megabytes per second.
+     */
     public double getBwMbSec() {
         return bwMbSec;
     }
 
+    /**
+     * standard setter that sets the measured disk bandwidth for this mark
+     *
+     * @param bwMbSec is the bandwidth value in megabytes per second.
+     */
     public void setBwMbSec(double bwMbSec) {
         this.bwMbSec = bwMbSec;
     }
