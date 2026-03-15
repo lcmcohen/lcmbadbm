@@ -37,7 +37,15 @@ public class Util {
     }
 
 
-    public static int randInt(int min, int max) {
+    /**
+ * Returns a random integer between min and max, inclusive.
+ * A new Random instance is created on each call.
+ * Consider refactoring to use a shared instance for better performance.
+ *
+ * @param min the lower bound (inclusive)
+ * @param max the upper bound (inclusive)
+ * @return a random integer in the range [min, max]
+ */public static int randInt(int min, int max) {
 
         // Usually this can be a field rather than a method variable
         Random rand = new Random();
@@ -49,7 +57,13 @@ public class Util {
     }
 
 
-    public static String displayString(double num) {
+    /**
+ * Formats a double value as a display string using the pattern ###.##.
+ * Useful for presenting benchmark results in the UI with consistent decimal formatting.
+ *
+ * @param num the numeric value to format
+ * @return a formatted string representation of num
+ */public static String displayString(double num) {
         return DF.format(num);
     }
 
@@ -254,3 +268,4 @@ public class Util {
         return "Generic " + devicePath;
     }
 }
+
