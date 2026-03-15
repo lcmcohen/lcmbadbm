@@ -243,6 +243,12 @@ public class App {
         worker.cancel(true);
     }
 
+    /**
+     * Starts benchmark run using current disk configuration
+     * If benchmark currently running, warning is logged and method is aborted
+     * Sets up area on disk and updates state
+     * Sets up diskWorker and Swing worker thread
+     */
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress

@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 /**
  * Tracks and records progress as a disk read or write is being executed
+ * Each Mark represents a single measurement taken during a Benchmark run
  */
 public class DiskMark {
 
