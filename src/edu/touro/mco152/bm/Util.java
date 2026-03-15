@@ -9,8 +9,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utility methods for jDiskMark
-
+ * Utility methods for jDiskMark. Includes OS-specific disk information,
+ * directory and file helpers, numeric formatting for display, and random number generation for block ordering.
  */
 public class Util {
 

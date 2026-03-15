@@ -3,7 +3,10 @@ package edu.touro.mco152.bm;
 import java.text.DecimalFormat;
 
 /**
- * Tracks and records progress as a disk read or write is being executed
+ * Represents a one timed iteration (a "mark") within a disk read or write benchmark run.
+ * Each mark corresponds to a single chunk of blocks and records that iteration's throughput
+ * plus running cumulative min, max, and average for the run so far.
+ * <p>
  */
 public class DiskMark {
 
