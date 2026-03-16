@@ -1,8 +1,9 @@
 /**
- * A container for utility classes that help with handling persistent
- * data. Data includes start/end time of run, IOMode, and disk info.
- * Using JPA and Derby to store Data in database in .jDiskMark.
- * This data can be used to gather statistical information
- * about the machine being tested.
+ * Core package for the jDiskMark disk benchmarking application. Contains application
+ * entry point and configuration ({@link edu.touro.mco152.bm.App}), benchmark execution
+ * on a background thread ({@link edu.touro.mco152.bm.DiskWorker}), per-iteration and
+ * run data ({@link edu.touro.mco152.bm.DiskMark}), and shared utilities
+ * ({@link edu.touro.mco152.bm.Util}). Persistence lives in
+ * {@link edu.touro.mco152.bm.persist} and UI in {@link edu.touro.mco152.bm.ui}.
  */
 package edu.touro.mco152.bm.persist;

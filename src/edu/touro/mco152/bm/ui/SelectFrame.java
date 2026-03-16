@@ -5,7 +5,7 @@ import edu.touro.mco152.bm.App;
 import java.io.File;
 
 /**
- *
+ * Frame to select location on disk for jDiskMarkData folder
  */
 public class SelectFrame extends javax.swing.JFrame {
 
