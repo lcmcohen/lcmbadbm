@@ -9,8 +9,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utility methods for jDiskMark
-
+ * IO Utility methods for jDiskMark, such as deleting directories, getting disk info, and formatting numbers.
+ * This class violates the Single-Purpose Principle, and will need a refactoring to make this project GoodBM
  */
 public class Util {
 
@@ -37,6 +37,13 @@ public class Util {
     }
 
 
+    /**
+     * Generate a random number between the inclusive min and max values provided.
+     * Does not suffer from the same vulnerability found from my previous New Super Mario Bros. research
+     * @param min The minimum value (inclusive)
+     * @param max The maximum value (inclusive)
+     * @return A random integer between min and max (inclusive)
+     */
     public static int randInt(int min, int max) {
 
         // Usually this can be a field rather than a method variable
@@ -129,12 +136,11 @@ public class Util {
     }
 
     /**
-     * On Linux OS get the device path when given a file path.
-     * eg.  filePath = /home/james/Desktop/jDiskMarkData
-     * devicePath = /dev/sda
+     * Return the corresponding device path from the given file path.
      *
-     * @param path the file path
-     * @return the device path
+     * @todo refactor to use exec(String[]) instead of exec(String) to avoid deprecation notice
+     * @param path the file path (like /home/james/Desktop/jDiskMarkData)
+     * @return the device path (like "/dev/sda")
      */
     static public String getDeviceFromPath(Path path) {
         try {

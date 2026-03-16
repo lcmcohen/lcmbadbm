@@ -19,6 +19,9 @@ import java.text.NumberFormat;
 /**
  * Creates and populates a graph with data from the current run, and
  * stores gui references for easy access.
+ * 
+ * The static properties of this class are used to provide a base sharable state for the data,
+ * since this is not instantiable.
  */
 public final class Gui {
 
@@ -31,6 +34,10 @@ public final class Gui {
     public static JProgressBar progressBar = null;
     public static RunPanel runPanel = null;
 
+    /**
+     * Creates and initializes the main chart panel used to visualize benchmark results.
+     * Each of the different series are color-coded.
+     */
     public static ChartPanel createChartPanel() {
 
         wSeries = new XYSeries("Writes");
@@ -104,6 +111,9 @@ public final class Gui {
         System.out.println(mark.toString());
     }
 
+    /**
+     * Adds a new read benchmark data point to the chart.
+     */
     public static void addReadMark(DiskMark mark) {
         rSeries.add(mark.getMarkNum(), mark.getBwMbSec());
         rAvgSeries.add(mark.getMarkNum(), mark.getCumAvg());
