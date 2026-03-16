@@ -17,6 +17,25 @@ import java.util.logging.Logger;
 
 /**
  * Primary class for global variables, main and common methods.
+ * 
+ * <p>
+ * Global constants contained in this class include:
+ * File locations:
+ * <ul>
+ * <li>PROPERTIESFILE
+ * <li>DATADIRNAME
+ * </ul>
+ * Unit Constants:
+ * <ul>
+ * <li>MEGABYTE
+ * <li>KILOBYTE
+ *
+ * </ul>
+ * State constants:
+ * <ul>
+ * <li>IDLE_STATE
+ * <li>DISK_TEST_STATE
+ * </ul>
  */
 public class App {
 
@@ -51,6 +70,7 @@ public class App {
     public static double rMax = -1, rMin = -1, rAvg = -1;
 
     /**
+     * Sets look and feel, then starts the application.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
