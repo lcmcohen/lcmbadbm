@@ -305,6 +305,13 @@ public class DiskWorker extends SwingWorker<Boolean, DiskMark> {
     }
 
 
+    /**
+     * Called by Swing when the background task finishes (success, cancel, or exception).
+     * Stores the final status from {@code doInBackground()}, optionally removes benchmark
+     * data if {@link edu.touro.mco152.bm.App#autoRemoveData} is true, sets app state back to
+     * {@link edu.touro.mco152.bm.App.State#IDLE_STATE}, and re-enables the UI via
+     * {@link edu.touro.mco152.bm.ui.Gui#mainFrame}{@code .adjustSensitivity()}.
+     */
     @Override
     protected void done() {
         // Obtain final status, might from doInBackground ret value, or SwingWorker error
