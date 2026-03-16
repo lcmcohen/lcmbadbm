@@ -264,14 +264,11 @@ public class App {
     }
 
     /**
-     * Starts a disk benchmark run on a background thread. Verifies that no test is already running,
-     * prepares the data directory (or falls back to a temp directory if the configured one
-     * is not writable), sets app state to {@link edu.touro.mco152.bm.App.State#DISK_TEST_STATE},
-     * creates a {@link edu.touro.mco152.bm.DiskWorker} with a progress listener, and executes it.
-     * Write and/or read tests are determined by {@link edu.touro.mco152.bm.App#writeTest} and
-     * {@link edu.touro.mco152.bm.App#readTest}. Does nothing if a benchmark is already in progress.
+     * Starts benchmark run using current disk configuration
+     * If benchmark currently running, warning is logged and method is aborted
+     * Sets up area on disk and updates state
+     * Sets up diskWorker and Swing worker thread
      */
-
     public static void startBenchmark() {
 
         //1. check that there isn't already a worker in progress

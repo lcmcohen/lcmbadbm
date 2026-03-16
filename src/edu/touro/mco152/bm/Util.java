@@ -9,8 +9,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utility methods for jDiskMark. Includes OS-specific disk information,
- * directory and file helpers, numeric formatting for display, and random number generation for block ordering.
+ * Utility methods for jDiskMark
+ * including random number generator, disk and device info retrieval.
  */
 public class Util {
 
@@ -36,7 +36,13 @@ public class Util {
         return (path.delete());
     }
 
-
+    /**
+     * Generates random Int in given range
+     *
+     * @param min minimum value (inclusive)
+     * @param max maximum value (inclusive)
+     * @return random integer between min and max
+     */
     public static int randInt(int min, int max) {
 
         // Usually this can be a field rather than a method variable
