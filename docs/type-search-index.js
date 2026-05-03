@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"edu.touro.mco152.bm","l":"DiskMark"},{"p":"edu.touro.mco152.bm","l":"DiskMark.MarkType","k":"9"}];updateSearchResults();
